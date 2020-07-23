@@ -92,7 +92,7 @@ def prompt(msg: str, default: Optional[str] = None) -> str:
         msg = f"{msg} [{default}]: "
     else:
         msg = f"{msg}: "
-    result = input(msg)
+    result = ''  #input(msg)
     if not result and default:
         return default
     return result
@@ -136,7 +136,7 @@ def find_files(
 
 def secure_continue_request() -> bool:
     """Asks for explicit approval from the user. Empty string not accepted"""
-    return input("Do you want to continue? [y/N] ") in ["Y", "y"]
+    return True  # input("Do you want to continue? [y/N] ") in ["Y", "y"]
 
 
 def persist_client_configuration(

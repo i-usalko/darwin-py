@@ -16,3 +16,5 @@ darwin_py.egg-info/PKG-INFO
 *.mov
 *.mp4
 *.txt
+
+.venv

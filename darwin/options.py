@@ -17,6 +17,10 @@ class Options(object):
         # AUTHENTICATE
         subparsers.add_parser("authenticate", help="Authenticate the user. ")
 
+        # AUTHENTICATE-AGENT
+        parser_agent = subparsers.add_parser("authenticate-agent", help="Authenticate the agent. ")
+        parser_agent.add_argument("--api-key", nargs="?", type=str, help="API Key. ")
+
         # SELECT TEAM
         parser_create = subparsers.add_parser("team", help="List or pick teams. ")
         parser_create.add_argument("team_name", nargs="?", type=str, help="Team name to use. ")
@@ -169,6 +173,17 @@ class Options(object):
         )
         parser_file_status.add_argument("status", type=str, help="Status to change to")
         parser_file_status.add_argument("files", type=str, nargs="+", help="Files to change status")
+
+        # Comment
+        parser_comment = dataset_action.add_parser("comment", help="Comment image.")
+        parser_comment.add_argument(
+            "dataset",
+            type=str,
+            help="[Remote] Dataset name: to list all the existing dataset, run 'darwin dataset remote'. ",
+        )
+        parser_comment.add_argument("file", type=str, help="Image file to comment")
+
+        parser_convert.add_argument("-o", "--output_dir", type=str, help="Where to store output files")
 
         # Help
         dataset_action.add_parser("help", help="Show this help message and exit.")

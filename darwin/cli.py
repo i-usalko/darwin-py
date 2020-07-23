@@ -24,6 +24,12 @@ def main():
 def run(args, parser):
     if args.command == "help":
         f.help(parser)
+    # Authenticate agent
+    if args.command == "authenticate-agent":
+        api_key = args.api_key
+        api_key = api_key.strip()
+        f.authenticate(api_key, True, "~/.darwin/datasets")
+        print("Authentication succeeded.")
     # Authenticate user
     if args.command == "authenticate":
         api_key = getpass.getpass(prompt="API key: ", stream=None)
@@ -86,6 +92,8 @@ def run(args, parser):
             f.set_file_status(args.dataset, args.status, args.files)
         elif args.action == "split":
             f.split(args.dataset, args.val_percentage, args.test_percentage, args.seed)
+        elif args.action == "comment":
+            f.post_comment(args.dataset, args.path, args.file, args.comment_text, args.comment_x_position, args.comment_y_position, args.comment_width_px, args.comment_height_px)
         elif args.action == "help" or args.action is None:
             f.help(parser, "dataset")
 
