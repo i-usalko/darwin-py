@@ -17,7 +17,7 @@ def instantitate_item(client, item_id):
     return result["current_workflow_id"]
 
 
-def post_comment(dataset, filename, text, x=1, y=1, w=1, h=1):
+def post_comment(dataset, filename, text, x=100, y=100, w=10, h=10):
     items = dataset.fetch_remote_files(filters={"filenames": [filename]})
     items = list(items)
     if len(items) == 0:

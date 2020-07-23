@@ -93,7 +93,7 @@ def run(args, parser):
         elif args.action == "split":
             f.split(args.dataset, args.val_percentage, args.test_percentage, args.seed)
         elif args.action == "comment":
-            f.post_comment(args.dataset, args.path, args.file, args.comment_text, args.comment_x_position, args.comment_y_position, args.comment_width_px, args.comment_height_px)
+            f.post_comment(args.dataset, args.file, args.comment_text, args.comment_x_position, args.comment_y_position, args.comment_width_px, args.comment_height_px)
         elif args.action == "help" or args.action is None:
             f.help(parser, "dataset")
 

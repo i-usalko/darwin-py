@@ -546,7 +546,14 @@ def instantitate_item(client, item_id):
     return result["current_workflow_id"]
 
 
-def post_comment(dataset, path, filename, text, x=1, y=1, w=1, h=1):
+def post_comment(dataset_name, filename, text, x=1, y=1, w=1, h=1):
+    client = Client.local()
+    try:
+        dataset = client.get_remote_dataset(dataset_identifier=dataset_name)
+    except NotFound:
+        print(f"unable to find dataset: {dataset_name}")
+        sys.exit(0)
+
     items = dataset.fetch_remote_files(filters={"filenames": [filename]})
     items = list(items)
     if len(items) == 0:
@@ -555,7 +562,7 @@ def post_comment(dataset, path, filename, text, x=1, y=1, w=1, h=1):
         workflow_id = item.current_workflow_id
         if not workflow_id:
             workflow_id = instantitate_item(dataset.client, item.id)
-        post_workflow_comment(dataset.client, workflow_id, text, x, y, w, h)
+        post_workflow_comment(dataset.client, workflow_id, text[0], x, y, w, h)
 
 
 def help(parser, subparser: Optional[str] = None):
