@@ -593,7 +593,7 @@ def post_comment(dataset_name, filename, text, x=1, y=1, w=1, h=1):
         workflow_id = item.current_workflow_id
         if not workflow_id:
             workflow_id = instantitate_item(dataset.client, item.id)
-        post_workflow_comment(dataset.client, workflow_id, text[0], x, y, w, h)
+        post_workflow_comment(dataset.client, workflow_id, text, x, y, w, h)
 
 
 def help(parser, subparser: Optional[str] = None):

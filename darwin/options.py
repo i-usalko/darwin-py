@@ -195,7 +195,7 @@ class Options(object):
         )
         parser_comment.add_argument("file", type=str, help="Image file to comment")
         # parser_comment.add_argument("--path", type=str, default=None, help="Folder to upload the files into.")
-        parser_comment.add_argument("--comment-text", type=str, nargs="+", help="Comment: list of words")
+        parser_comment.add_argument("--comment-text", type=str, help="Comment: list of words")
         parser_comment.add_argument("--comment-x-position", type=int, default=1, help="X coordinate for comment")
         parser_comment.add_argument("--comment-y-position", type=int, default=1, help="Y coordinate for comment")
         parser_comment.add_argument("--comment-width-px", type=int, default=1, help="Comment width in pixels")
