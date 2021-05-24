@@ -527,7 +527,6 @@ def set_file_status(dataset_slug: str, status: str, files: List[str]):
     except NotFound as e:
         _error(f"No dataset with name '{e.name}'")
 
-
 def find_supported_format(query, supported_formats):
     for (fmt, fmt_parser) in supported_formats:
         if fmt == query:
